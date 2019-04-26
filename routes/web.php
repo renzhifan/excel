@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('form');
 });
+Route::any('/export','GoodsController@export');
+Route::any('/import','GoodsController@import');
