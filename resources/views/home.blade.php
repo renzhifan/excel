@@ -13,6 +13,15 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <div class="btn-group" role="group" aria-label="..." >
+                            <a href="/export" >
+                                <button type="button" class="btn btn-success">下载最终表格</button>
+                            </a>
+                        </div>
+                            <hr/>
+                            <hr/>
+                            <hr/>
+                            <hr/>
                         <form class="form-horizontal" role="form"
                               action="/import" method="post" enctype="multipart/form-data">
                             <div class="form-group">
