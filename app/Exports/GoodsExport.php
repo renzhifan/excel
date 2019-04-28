@@ -3,15 +3,22 @@
 namespace App\Exports;
 
 use App\Goods;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromArray;
 
-class GoodsExport implements FromCollection
+class GoodsExport implements FromArray
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function array():array
     {
-        return Goods::all();
+
+        $rawData=Goods::all()->toArray();
+        $resData=[config('excel.header')];
+        foreach ($rawData as $val){
+            $resData[]=$val;
+        }
+        dd($resData);
+        return ($resData);
     }
 }

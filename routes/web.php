@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/form', function () {
     return view('form');
+});
+Route::get('/', function () {
+    return view('welcome');
 });
 Route::any('/export','GoodsController@export');
 Route::any('/import','GoodsController@import');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

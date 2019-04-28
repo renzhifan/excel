@@ -1,23 +1,43 @@
 <?php
 
-namespace App\Exports;
+namespace App\Jobs;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 use App\Goods;
-use App\Jobs\GoodsOperation;
-use Maatwebsite\Excel\Concerns\ToArray;
-class GoodsImport implements ToArray
+class GoodsOperation implements ShouldQueue
 {
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public $row;
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function array(array $row)
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($row)
     {
-        if($row){
-            dispatch((new GoodsOperation($row)));
-//            Goods::truncate();
-//            foreach($row as $value){
-//                 $this->createOrUpdate($value);
-//            }
+        $this->row=$row;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        try{
+            Goods::truncate();
+            foreach($this->row as $value){
+                $this->createOrUpdate($value);
+                \Log::info($value[0]);
+            }
+        }catch (\Exception $e){
+            \Log::error($e->getMessage());
         }
     }
     public function createOrUpdate($value)
