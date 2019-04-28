@@ -79,7 +79,7 @@ return [
     */
 
     'waits' => [
-        'redis:default' => 120,
+        'redis:default' => 60,
     ],
 
     /*
@@ -94,7 +94,7 @@ return [
     */
 
     'trim' => [
-        'recent' => 120,
+        'recent' => 60,
         'failed' => 10080,
         'monitored' => 10080,
     ],
