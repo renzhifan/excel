@@ -37,7 +37,6 @@ class GoodsOperation implements ShouldQueue
                 Goods::truncate();
                 foreach ($this->row as $value) {
                     $this->createOrUpdate($value);
-                    \Log::info($value[0]);
                 }
             }
         } catch (\Exception $e) {
