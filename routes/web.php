@@ -11,14 +11,23 @@
 |
 */
 
-Route::get('/form', function () {
-    return view('form');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/form', function () {
+        return view('form');
+    });
+
+    Route::any('/export', 'GoodsController@export');
+
+    Route::any('/import', 'GoodsController@import');
+
 });
+
 Route::get('/', function () {
+
     return view('welcome');
+
 });
-Route::any('/export','GoodsController@export');
-Route::any('/import','GoodsController@import');
 
 Auth::routes();
 

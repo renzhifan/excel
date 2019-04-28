@@ -18,7 +18,6 @@ class GoodsExport implements FromArray
         foreach ($rawData as $val) {
             $resData[] = $val;
         }
-        dd($resData);
-        return ($resData);
+        return $resData;
     }
 }
