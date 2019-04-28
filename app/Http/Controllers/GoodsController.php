@@ -11,7 +11,7 @@ class GoodsController extends Controller
 {
     public function export()
     {
-        return Excel::download(new GoodsExport, 'users.xlsx');
+        return Excel::download(new GoodsExport, '最终excel数据表.xlsx');
     }
     public function import()
     {

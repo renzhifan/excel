@@ -11,11 +11,11 @@
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
 
-    Route::get('/form', function () {
+   /* Route::get('/form', function () {
         return view('form');
-    });
+    });*/
 
     Route::any('/export', 'GoodsController@export');
 
