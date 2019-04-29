@@ -48,7 +48,7 @@ class GoodsOperation implements ShouldQueue
     {
         if (Goods::is_exit(trim($value[0]))) {
             $goods = new Goods;
-            $goods->order_number = trim($value[0]);
+            $goods->order_number = ' '.trim($value[0]).'';
             $goods->date = trim($value[19]);
             $goods->buyer_nickname = trim($value[1]);
             $goods->goods_name = trim($value[21]);

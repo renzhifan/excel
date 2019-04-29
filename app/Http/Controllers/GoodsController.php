@@ -16,6 +16,6 @@ class GoodsController extends Controller
     public function import()
     {
        Excel::import(new GoodsImport, request()->file('file'));
-       dd('success');
+       return redirect('/home');
     }
 }//class end
