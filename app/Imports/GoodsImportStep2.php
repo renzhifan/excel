@@ -14,7 +14,8 @@ class GoodsImportStep2 implements ToArray
     public function array(array $row)
     {
 
-        unset($row[0]);
+
+        /*unset($row[0]);
         foreach ($row as $val) {
             $goods = Goods::where('order_number', ' ' . trim($val[13]) . ' ')->first();
                 if ($goods) {
@@ -34,7 +35,7 @@ class GoodsImportStep2 implements ToArray
 //                ]);
 //            dd($val);
         }
-        dd($row);
+        dd($row);*/
 //        dispatch((new GoodsOperation($row)));
     }
 }

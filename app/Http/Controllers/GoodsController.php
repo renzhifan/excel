@@ -25,6 +25,6 @@ class GoodsController extends Controller
        Excel::import(new GoodsImportStep2(), request()->file('file'));
         return redirect()
             ->route('home')
-            ->with('success', '上传成功.');
+            ->with('importStep2', '上传成功.');
     }
 }//class end

@@ -52,13 +52,13 @@
                         @endif
                         <form class="form-horizontal" role="form"
                               action="/importStep2" method="post" enctype="multipart/form-data">
-                            @if (Session::has('success'))
+                            @if (Session::has('importStep2'))
                                 <div class="alert alert-success">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                     <strong>
                                         <i class="fa fa-check-circle fa-lg fa-fw"></i> Success.
                                     </strong>
-                                    {{ Session::get('success') }}
+                                    {{ Session::get('importStep2') }}
                                 </div>
                             @endif
                             <div class="form-group">
