@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Goods;
+use App\Imports\GoodsImportStep2;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\GoodsExport;
-use App\Exports\GoodsImport;
+use App\Imports\GoodsImport;
 class GoodsController extends Controller
 {
     public function export()
@@ -16,6 +16,15 @@ class GoodsController extends Controller
     public function import()
     {
        Excel::import(new GoodsImport, request()->file('file'));
-       return redirect('/home');
+        return redirect()
+            ->route('home')
+            ->with('success', '上传成功.');
+    }
+    public function importStep2()
+    {
+       Excel::import(new GoodsImportStep2(), request()->file('file'));
+        return redirect()
+            ->route('home')
+            ->with('success', '上传成功.');
     }
 }//class end

@@ -16,13 +16,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::any('/export', 'GoodsController@export');
 
     Route::any('/import', 'GoodsController@import');
+    Route::any('/importStep2', 'GoodsController@importStep2');
 
 });
 
 Route::get('/', function () {
 
-    return view('welcome');
-
+    return redirect('home');
 });
 
 Auth::routes();

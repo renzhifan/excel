@@ -19,6 +19,10 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/import'
+        '/import',
+        '/importStep2',
+        '/importStep3',
+        '/importStep4',
+        '/importStep5',
     ];
 }

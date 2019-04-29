@@ -2,20 +2,17 @@
 
 namespace App\Imports;
 
-use App\Goods;
-use Maatwebsite\Excel\Concerns\ToModel;
+use App\Jobs\GoodsOperation;
+use Maatwebsite\Excel\Concerns\ToArray;
 
-class GoodsImport implements ToModel
+class GoodsImport implements ToArray
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+     * 引入淘宝订单数据
+     * @return \Illuminate\Support\Collection
+     */
+    public function array(array $row)
     {
-        return new Goods([
-            //
-        ]);
+        dispatch((new GoodsOperation($row)));
     }
 }

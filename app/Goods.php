@@ -13,4 +13,8 @@ class Goods extends Model
     {
         return !static ::where('order_number',$order_number)->first();
     }
+    public static function updateStep2($order_number,$arr)
+    {
+        return static ::where('order_number',$order_number)->update($arr);
+    }
 }
