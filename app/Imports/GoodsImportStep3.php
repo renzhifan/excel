@@ -13,7 +13,8 @@ class GoodsImportStep3 implements ToArray
      */
     public function array(array $row)
     {
-        foreach ($row as $val) {
+        dd($row);
+        /*foreach ($row as $val) {
             if(!empty(Goods::where('order_number',' ' . trim($val[13]) . ' ')->first())){
                 Goods::updateStep2(' ' . trim($val[13]) . ' ',
                     [
@@ -22,6 +23,6 @@ class GoodsImportStep3 implements ToArray
                         'service_fee_for_head_of_regiment' => $val[11],
                     ]);
             }
-        }
+        }*/
     }
 }

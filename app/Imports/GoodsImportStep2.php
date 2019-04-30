@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use Maatwebsite\Excel\Concerns\ToArray;
-use App\Goods;
 use App\Jobs\GoodsStep2;
 class GoodsImportStep2 implements ToArray
 {
