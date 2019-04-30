@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <div class="card-header">Step2 上传淘宝订单数据</div>
+                    <div class="card-header">Step1 上传淘宝订单数据</div>
                     <ol style="color: red;">
                         <li>表格去掉顶部菜单行</li>
                         <li>把表格中收件人昵称的数据改为文本格式</li>
