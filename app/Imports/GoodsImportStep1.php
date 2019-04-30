@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Jobs\GoodsOperation;
+use App\Jobs\GoodsStep1;
 use Maatwebsite\Excel\Concerns\ToArray;
 
-class GoodsImport implements ToArray
+class GoodsImportStep1 implements ToArray
 {
     /**
      * 引入淘宝订单数据
@@ -13,6 +13,6 @@ class GoodsImport implements ToArray
      */
     public function array(array $row)
     {
-        dispatch((new GoodsOperation($row)));
+        dispatch((new GoodsStep1($row)));
     }
 }
