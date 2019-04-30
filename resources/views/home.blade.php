@@ -4,24 +4,24 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <div class="btn-group" role="group" aria-label="..." >
+                    <a href="/export" >
+                        <button type="button" class="btn btn-success">下载最终表格</button>
+                    </a>
+                </div>
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
-
+                    <div class="card-header">Step2 上传淘宝订单数据</div>
+                    <ol style="color: red;">
+                        <li>表格去掉顶部菜单行</li>
+                        <li>把表格中收件人昵称的数据改为文本格式</li>
+                        <li>把表格中订单号的数据改为会计数据格式</li>
+                    </ol>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <div class="btn-group" role="group" aria-label="..." >
-                            <a href="/export" >
-                                <button type="button" class="btn btn-success">下载最终表格</button>
-                            </a>
-                        </div>
-                            <hr/>
-                            <hr/>
-                            <hr/>
-                            <hr/>
                         <form class="form-horizontal" role="form"
                               action="/import" method="post" enctype="multipart/form-data">
                             @if (Session::has('success'))
@@ -42,8 +42,10 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">Step2</div>
-
+                    <div class="card-header">Step2 上传淘宝客数据</div>
+                    <ol style="color: red;">
+                        <li>表格去掉顶部菜单行</li>
+                    </ol>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
