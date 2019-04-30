@@ -13,11 +13,8 @@ class GoodsImportStep2 implements ToArray
      */
     public function array(array $row)
     {
-
-
-        /*unset($row[0]);
         foreach ($row as $val) {
-            $goods = Goods::where('order_number', ' ' . trim($val[13]) . ' ')->first();
+            /*$goods = Goods::where('order_number', ' ' . trim($val[13]) . ' ')->first();
                 if ($goods) {
                     $goods = $goods->id;
                     $save = Goods::find($goods);
@@ -25,17 +22,16 @@ class GoodsImportStep2 implements ToArray
                     $save->taobao_customer_return_point = $val[9];
                     $save->service_fee_for_head_of_regiment = $val[11];
                     $save->save();
-                }
-
-//            Goods::updateStep2(' ' . trim($val[13]) . ' ',
-//                [
-//                    'accounting_time_two' => $val[2],
-//                    'taobao_customer_return_point' => $val[9],
-//                    'service_fee_for_head_of_regiment' => $val[11],
-//                ]);
-//            dd($val);
+                }*/
+            if(!empty(Goods::where('order_number',' ' . trim($val[13]) . ' ')->first())){
+                Goods::updateStep2(' ' . trim($val[13]) . ' ',
+                    [
+                        'accounting_time_two' => $val[2],
+                        'taobao_customer_return_point' => $val[9],
+                        'service_fee_for_head_of_regiment' => $val[11],
+                    ]);
+            }
         }
-        dd($row);*/
 //        dispatch((new GoodsOperation($row)));
     }
 }
