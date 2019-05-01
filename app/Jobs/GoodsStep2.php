@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Goods;
+
 class GoodsStep2 implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -33,8 +34,8 @@ class GoodsStep2 implements ShouldQueue
         try {
             if ($this->row) {
                 foreach ($this->row as $val) {
-                    if(!empty(Goods::where('order_number',' ' . trim($val[13]) . ' ')->first())){
-                        Goods::updateStep2(' ' . trim($val[13]) . ' ',
+                    if (!Goods::is_exit($val[13])) {
+                        Goods::updateGoods(trim($val[13]),
                             [
                                 'accounting_time_two' => $val[2],
                                 'taobao_customer_return_point' => $val[9],

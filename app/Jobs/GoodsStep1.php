@@ -48,20 +48,36 @@ class GoodsStep1 implements ShouldQueue
     {
         if (Goods::is_exit(trim($value[0]))) {
             $goods = new Goods;
-            $goods->order_number = ' '.trim($value[0]).'';
-            $goods->date = trim($value[19]);
-            $goods->buyer_nickname = trim($value[1]);
-            $goods->goods_name = trim($value[21]);
-            $goods->goods_num = trim($value[22]);
-            $goods->order_state = trim($value[29]);
-            $goods->total_sum = trim($value[8]);
-            $goods->actual_payment = trim($value[10]);
-            $goods->payment_method = trim($value[4]);
-            $goods->supplier = trim($value[28]);
-            $goods->addressee = trim($value[14]);
-            $goods->phone = trim($value[18]);
-            $goods->receiving_address = trim($value[15]);
+            $goods->order_number = ' ' . trim($value[0]) . '';//订单编号
+            $goods->date = trim($value[19]);//日期
+            $goods->buyer_nickname = trim($value[1]);//买家会员名
+            $goods->goods_name = trim($value[21]);//产品名称
+            $goods->goods_num = trim($value[22]);//数量
+            $goods->order_state = trim($value[29]);//订单状态
+            $goods->total_sum = trim($value[8]);//总金额
+            $goods->actual_payment = trim($value[10]);//实际支付
+            $goods->payment_date_one = trim($value[53]);//到账时间1
+            $goods->amount_of_account_payable_one = trim($value[54]);//到账金额
+            $goods->addressee = trim($value[14]);//收件人
+            $goods->phone = trim($value[18]);//电话
+            $goods->receiving_address = trim($value[15]);//收货地址
             $goods->save();
+        } else {
+            Goods::updateGoods(trim($value[0]),
+                [
+                    'date ' => trim($value[19]),//日期
+                    'buyer_nickname ' => trim($value[1]),//买家会员名
+                    'goods_name ' => trim($value[21]),//产品名称
+                    'goods_num ' => trim($value[22]),//数量
+                    'order_state ' => trim($value[29]),//订单状态
+                    'total_sum ' => trim($value[8]),//总金额
+                    'actual_payment ' => trim($value[10]),//实际支付
+                    'payment_date_one ' => trim($value[53]),//到账时间1
+                    'amount_of_account_payable_one ' => trim($value[54]),//到账金额
+                    'addressee ' => trim($value[14]),//收件人
+                    'phone ' => trim($value[18]),//电话
+                    'receiving_address ' => trim($value[15]),//收货地址
+                ]);
         }
     }
 }
