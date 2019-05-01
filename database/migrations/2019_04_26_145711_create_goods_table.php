@@ -30,6 +30,7 @@ class CreateGoodsTable extends Migration
             $table->string('order_state')->nullable()->comment('订单状态');
             $table->string('channel')->nullable()->comment('渠道');
             $table->string('payment_method')->nullable()->comment('支付方式');
+            $table->string('payment_number')->nullable()->comment('支付宝支付单号');
             $table->string('payment_date_one')->nullable()->comment('到账时间1');
             $table->string('amount_of_account_payable_one')->nullable()->comment('到账金额1');
             $table->string('payment_date_two')->nullable()->comment('到账时间2');

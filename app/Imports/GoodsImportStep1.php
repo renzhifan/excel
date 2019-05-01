@@ -13,6 +13,7 @@ class GoodsImportStep1 implements ToArray
      */
     public function array(array $row)
     {
+        unset($row[0]);
         dispatch((new GoodsStep1($row)));
     }
 }
