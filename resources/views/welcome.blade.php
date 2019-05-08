@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -71,10 +72,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        {{--@if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif--}}
                     @endauth
                 </div>
             @endif
@@ -83,17 +80,20 @@
                 <div class="title m-b-md">
                 请先登录
                 </div>
-
-                {{--<div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>--}}
             </div>
         </div>
     </body>
+    <script>
+        axios.get('http://announcement.test/getList',{
+            params:{
+                ID:12345
+            }
+        })
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+    </script>
 </html>
