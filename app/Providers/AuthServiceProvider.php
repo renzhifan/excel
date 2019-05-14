@@ -25,9 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         \Horizon::auth(function ($request) {
-            return false;
-            // 是否是站长
-            return \Auth::user()->hasRole('Founder');
+            return \Auth::user()->email!='zhifan6797@163.com';
         });
         //
     }
