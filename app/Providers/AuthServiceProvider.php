@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         \Horizon::auth(function ($request) {
-            return \Auth::user()->email!='zhifan6797@163.com';
+            return \Auth::check() && \Auth::user()->email!='zhifan6797@163.com';
         });
         //
     }
