@@ -11,21 +11,22 @@
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     Route::any('/export', 'GoodsController@export');
 
     Route::any('/importStep1', 'GoodsController@importStep1');
     Route::any('/importStep2', 'GoodsController@importStep2');
     Route::any('/importStep3', 'GoodsController@importStep3');
+    Route::get('/home', 'HomeController@index')->name('home');
 
 });
 
 Route::get('/', function () {
 
-    return redirect('home');
+    return view ('auth.login');
+    return redirect('login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
