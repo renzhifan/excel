@@ -13,16 +13,16 @@ class GoodsStep1 implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $row;
+    public $rows;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($row)
+    public function __construct($rows)
     {
-        $this->row = $row;
+        $this->rows = $rows;
     }
 
     /**
@@ -33,9 +33,8 @@ class GoodsStep1 implements ShouldQueue
     public function handle()
     {
         try {
-            if ($this->row) {
-                Goods::truncate();
-                foreach ($this->row as $value) {
+            if ($this->rows) {
+                foreach ($this->rows as $value) {
                     $this->createOrUpdate($value);
                 }
             }
@@ -47,29 +46,33 @@ class GoodsStep1 implements ShouldQueue
     public function createOrUpdate($value)
     {
         if (Goods::is_exit(trim($value[0]))) {
-            $goods = new Goods;
-            $goods->order_number = ' ' . trim($value[0]) . '';//订单编号
-            $goods->date = trim($value[19]);//日期
-            $goods->buyer_nickname = trim($value[1]);//买家会员名
-            $goods->goods_name = trim($value[21]);//产品名称
-            $goods->goods_num = trim($value[22]);//数量
-            $goods->order_state = trim($value[12]);//订单状态
-            $goods->total_sum = trim($value[8]);//总金额
-            $goods->actual_payment = trim($value[10]);//实际支付
-            $goods->payment_number = trim($value[4]);//支付宝支付单号
-            $goods->payment_date_one = trim($value[53]);//到账时间1
-            $goods->amount_of_account_payable_one = trim($value[54]);//到账金额
-            $goods->addressee = trim($value[14]);//收件人
-            $goods->phone = trim($value[18]);//电话
-            $goods->receiving_address = trim($value[15]);//收货地址
-            $goods->save();
+            if (!empty($value[4]) && !is_null($value[4])) {
+                $payment_number = explode('，', trim($value[4]));
+                $payment_number = explode('：', $payment_number[1])[1];
+            }
+            $goodsData = new Goods;
+            $goodsData->order_number ='="'.trim($value[0]).'"';//订单编号
+            $goodsData->date = trim($value[19]);//日期
+            $goodsData->buyer_nickname = trim($value[1]);//买家会员名
+            $goodsData->goods_name = trim($value[21]);//产品名称
+            $goodsData->goods_num = trim($value[22]);//数量
+            $goodsData->order_state = trim($value[12]);//订单状态
+            $goodsData->total_sum = trim($value[8]);//总金额
+            $goodsData->actual_payment = trim($value[10]);//实际支付
+            $goodsData->payment_number = $payment_number;//支付宝支付单号
+            $goodsData->payment_date_one = trim($value[53]);//收入时间1
+            $goodsData->amount_of_account_payable_one = trim($value[54]);//收入金额1
+            $goodsData->addressee = trim($value[14]);//收件人
+            $goodsData->phone = trim($value[18]);//电话
+            $goodsData->receiving_address = trim($value[15]);//收货地址
+            $goodsData->save();
         } else {
-            Goods::updateGoods(trim($value[0]),
+            /*Goods::updateGoods(trim($value[0]),
                 [
                     'order_state ' => trim($value[12]),//订单状态
                     'payment_date_one ' => trim($value[53]),//到账时间1
                     'amount_of_account_payable_one ' => trim($value[54]),//到账金额
-                ]);
+                ]);*/
         }
     }
 }

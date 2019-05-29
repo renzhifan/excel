@@ -14,6 +14,7 @@ class GoodsExport implements FromArray
     {
 
         $rawData = Goods::all()->toArray();
+//        dd($rawData);
         $resData = [config('excel.header')];
         foreach ($rawData as $val) {
             $resData[] = $val;

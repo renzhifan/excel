@@ -15,6 +15,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     Route::any('/export', 'GoodsController@export');
 
+    Route::any('/importStep', 'GoodsController@importStep');
     Route::any('/importStep1', 'GoodsController@importStep1');
     Route::any('/importStep2', 'GoodsController@importStep2');
     Route::any('/importStep3', 'GoodsController@importStep3');

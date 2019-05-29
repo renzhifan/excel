@@ -34,8 +34,8 @@ class GoodsStep2 implements ShouldQueue
         try {
             if ($this->row) {
                 foreach ($this->row as $val) {
-                    if (!Goods::is_exit($val[13])) {
-                        Goods::updateGoods(trim($val[13]),
+                    if (!Goods::is_exit($val[12])) {
+                        Goods::updateGoods(trim($val[12]),
                             [
                                 'accounting_time_two' => $val[2],
                                 'taobao_customer_return_point' => $val[9],

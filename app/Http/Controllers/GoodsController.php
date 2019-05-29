@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\GoodsExport;
+use App\Imports\GoodsImportStep;
 use App\Imports\GoodsImportStep1;
 use App\Imports\GoodsImportStep2;
 use App\Imports\GoodsImportStep3;
@@ -13,12 +14,19 @@ class GoodsController extends Controller
     {
         return Excel::download(new GoodsExport, '最终excel数据表.xlsx');
     }
+    public function importStep()
+    {
+       Excel::import(new GoodsImportStep, request()->file('file'));
+        return redirect()
+            ->route('home')
+            ->with('importStep', '上传成功.');
+    }
     public function importStep1()
     {
        Excel::import(new GoodsImportStep1, request()->file('file'));
         return redirect()
             ->route('home')
-            ->with('success', '上传成功.');
+            ->with('importStep1', '上传成功.');
     }
     public function importStep2()
     {
