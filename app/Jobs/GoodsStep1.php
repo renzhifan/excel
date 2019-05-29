@@ -51,7 +51,7 @@ class GoodsStep1 implements ShouldQueue
                 $payment_number = explode('：', $payment_number[1])[1];
             }
             $goodsData = new Goods;
-            $goodsData->order_number ='="'.trim($value[0]).'"';//订单编号
+            $goodsData->order_number =getOrderNumber(trim($value[0]));//订单编号
             $goodsData->date = trim($value[19]);//日期
             $goodsData->buyer_nickname = trim($value[1]);//买家会员名
             $goodsData->goods_name = trim($value[21]);//产品名称
@@ -63,7 +63,7 @@ class GoodsStep1 implements ShouldQueue
             $goodsData->payment_date_one = trim($value[53]);//收入时间1
             $goodsData->amount_of_account_payable_one = trim($value[54]);//收入金额1
             $goodsData->addressee = trim($value[14]);//收件人
-            $goodsData->phone = trim($value[18]);//电话
+            $goodsData->phone = getPhone(trim($value[18]));//电话
             $goodsData->receiving_address = trim($value[15]);//收货地址
             $goodsData->save();
         } else {

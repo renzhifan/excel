@@ -48,7 +48,7 @@ class GoodsStep implements ShouldQueue
     {
         $goods = new Goods;
         $goods->date =trim($row[1]);
-        $goods->order_number =$this->getOrderNumber(trim($row[2]));
+        $goods->order_number =getOrderNumber(trim($row[2]));
         $goods->buyer_nickname =trim($row[3]);
         $goods->goods_name =trim($row[4]);
         $goods->goods_num =trim($row[5]);
@@ -87,30 +87,9 @@ class GoodsStep implements ShouldQueue
         $goods->remarks =trim($row[38]);
         $goods->supplier =trim($row[39]);
         $goods->addressee =trim($row[40]);
-        $goods->phone =$this->getPhone(trim($row[41]));
+        $goods->phone =getPhone(trim($row[41]));
         $goods->receiving_address =trim($row[42]);
         $goods->save();
     }
-    public function getOrderNumber($order)
-    {
-        if(strpos(trim($order),'=') !== false){
-            $order_number=substr($order,1);
-        }elseif(empty($order)){
-            $order_number='';
-        }else{
-            $order_number='"'.trim($order).'"';
-        }
-        return $order_number;
-    }
-    public function getPhone($phone)
-    {
-        if(strpos(trim($phone),"'") !== false){
-            $order_number='"'.substr($phone,1).'"';
-        }elseif(empty($phone)){
-            $order_number='';
-        }else{
-            $order_number='"'.trim($phone).'"';
-        }
-        return $order_number;
-    }
+
 }
