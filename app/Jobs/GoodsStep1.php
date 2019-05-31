@@ -61,18 +61,18 @@ class GoodsStep1 implements ShouldQueue
             $goodsData->actual_payment = trim($value[10]);//实际支付
             $goodsData->payment_number = $payment_number;//支付宝支付单号
             $goodsData->payment_date_one = trim($value[53]);//收入时间1
-            $goodsData->amount_of_account_payable_one = trim($value[54]);//收入金额1
+            $goodsData->amount_of_account_payable_one = trim($value[54]);//收入时间1
             $goodsData->addressee = trim($value[14]);//收件人
             $goodsData->phone = getPhone(trim($value[18]));//电话
             $goodsData->receiving_address = trim($value[15]);//收货地址
             $goodsData->save();
         } else {
-            /*Goods::updateGoods(trim($value[0]),
+            Goods::updateGoods(getOrderNumber(trim($value[0])),
                 [
-                    'order_state ' => trim($value[12]),//订单状态
-                    'payment_date_one ' => trim($value[53]),//到账时间1
-                    'amount_of_account_payable_one ' => trim($value[54]),//到账金额
-                ]);*/
+//                    'order_state ' => trim($value[12]),//订单状态
+                    'payment_date_one ' => trim($value[53]),//收入时间1
+                    'amount_of_account_payable_one ' => trim($value[54]),//收入时间1
+                ]);
         }
     }
 }
