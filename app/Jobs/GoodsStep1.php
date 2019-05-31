@@ -45,7 +45,7 @@ class GoodsStep1 implements ShouldQueue
 
     public function createOrUpdate($value)
     {
-        if (Goods::is_exit(trim($value[0]))) {
+        if (Goods::is_exit(getOrderNumber(trim($value[0])))) {
             if (!empty($value[4]) && !is_null($value[4])) {
                 $payment_number = explode('，', trim($value[4]));
                 $payment_number = explode('：', $payment_number[1])[1];
@@ -67,7 +67,7 @@ class GoodsStep1 implements ShouldQueue
             $goodsData->receiving_address = trim($value[15]);//收货地址
             $goodsData->save();
         } else {
-            Goods::updateGoods(getOrderNumber(trim($value[0])),
+            Goods::updateGoods(getOrderNumber(getOrderNumber(trim($value[0]))),
                 [
 //                    'order_state ' => trim($value[12]),//订单状态
                     'payment_date_one ' => trim($value[53]),//收入时间1

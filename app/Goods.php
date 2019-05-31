@@ -12,7 +12,7 @@ class Goods extends Model
 
     public static function is_exit($order_number)
     {
-        return !static ::where('order_number','"'.$order_number.'"')->first();
+        return !static ::where('order_number',$order_number)->first();
     }
     public static function updateGoods($order_number,$arr)
     {
