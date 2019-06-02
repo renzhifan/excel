@@ -6,7 +6,9 @@ if (!function_exists('getOrderNumber')) {
             $order_number = substr($order, 1);
         } elseif (empty($order)) {
             $order_number = '';
-        } else {
+        } elseif((strpos(trim($order), '"') !== false)){
+            $order_number =$order;
+        }else {
             $order_number = '"' . trim($order) . '"';
         }
         return $order_number;
@@ -20,7 +22,9 @@ if (!function_exists('getPhone')) {
             $order_number = '"' . substr($phone, 1) . '"';
         } elseif (empty($phone)) {
             $order_number = '';
-        } else {
+        } elseif((strpos(trim($phone), '"') !== false)){
+            $order_number =$phone;
+        }else {
             $order_number = '"' . trim($phone) . '"';
         }
         return $order_number;

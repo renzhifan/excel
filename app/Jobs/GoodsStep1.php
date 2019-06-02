@@ -46,7 +46,7 @@ class GoodsStep1 implements ShouldQueue
     public function createOrUpdate($value)
     {
         if (Goods::is_exit(getOrderNumber(trim($value[0])))) {
-            if (!empty($value[4]) && !is_null($value[4])) {
+            /*if (!empty($value[4]) && !is_null($value[4])) {
                 $payment_number = explode('，', trim($value[4]));
                 $payment_number = explode('：', $payment_number[1])[1];
             }
@@ -61,17 +61,17 @@ class GoodsStep1 implements ShouldQueue
             $goodsData->actual_payment = trim($value[10]);//实际支付
             $goodsData->payment_number = $payment_number;//支付宝支付单号
             $goodsData->payment_date_one = trim($value[53]);//收入时间1
-            $goodsData->amount_of_account_payable_one = trim($value[54]);//收入时间1
+            $goodsData->amount_of_account_payable_one = trim($value[54]);//收入金额1
             $goodsData->addressee = trim($value[14]);//收件人
             $goodsData->phone = getPhone(trim($value[18]));//电话
             $goodsData->receiving_address = trim($value[15]);//收货地址
-            $goodsData->save();
+            $goodsData->save();*/
         } else {
-            Goods::updateGoods(getOrderNumber(getOrderNumber(trim($value[0]))),
+            Goods::updateGoods(getOrderNumber(trim($value[0])),
                 [
 //                    'order_state ' => trim($value[12]),//订单状态
                     'payment_date_one ' => trim($value[53]),//收入时间1
-                    'amount_of_account_payable_one ' => trim($value[54]),//收入时间1
+                    'amount_of_account_payable_one ' => trim($value[54]),//收入金额1
                 ]);
         }
     }

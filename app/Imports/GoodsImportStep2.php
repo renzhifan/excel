@@ -12,7 +12,8 @@ class GoodsImportStep2 implements ToArray
      */
     public function array(array $row)
     {
-        dd($row);
+//        dd($row);
+        unset($row[0]);
         dispatch((new GoodsStep2($row)));
     }
 }

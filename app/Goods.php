@@ -16,6 +16,6 @@ class Goods extends Model
     }
     public static function updateGoods($order_number,$arr)
     {
-        return static ::where('order_number',' '.$order_number.' ')->update($arr);
+        return static ::where('order_number',$order_number)->update($arr);
     }
 }
