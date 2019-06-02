@@ -35,8 +35,8 @@ class GoodsImportStep3 implements ToArray
                         'payment_method' =>$payment_method,
                         'payment_date_two' =>$payment_date_two,
                         'refund' =>$refund,
-                        'taobao_customer_return_point' => $val[9],
-                        'service_fee_for_head_of_regiment' => $val[11],
+//                        'taobao_customer_return_point' => $val[9],
+//                        'service_fee_for_head_of_regiment' => $val[11],
                     ]);
             }
         }

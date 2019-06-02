@@ -37,7 +37,7 @@ class GoodsStep2 implements ShouldQueue
                     if (!Goods::is_exit(getOrderNumber(trim($val[12])))) {
                         Goods::updateGoods(getOrderNumber(trim($val[12])),
                             [
-                                'accounting_time_two' => trim($val[2]),
+                                'accounting_time_two' => str_replace('-','/',trim($val[2])),
                                 'taobao_customer_return_point' => trim($val[9]),
                                 'service_fee_for_head_of_regiment' => trim($val[11]),
                             ]);
